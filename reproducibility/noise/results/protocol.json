@@ -1,0 +1,125 @@
+{
+  "dataset_sha256": "4fc6158787b30c9c7a2c523ccb3169fc4fba9518f0bc57fa3ce9a6eee74737c2",
+  "source_repository": "https://github.com/Khasanovpython/Adaptive-learning-Clustering-Research",
+  "source_commit": "3fe7c251b9aa8e1d6d622ae16398ceb065a86921",
+  "n_profiles": 4600,
+  "features": [
+    "knowledge_score",
+    "engagement_score",
+    "assignment_completion",
+    "response_time",
+    "error_rate",
+    "motivation_level",
+    "cognitive_score",
+    "learning_speed",
+    "mental_load",
+    "risk_score"
+  ],
+  "noise_levels": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "repeats_nonzero": 20,
+  "noise_seeds": [
+    20261110,
+    20261111,
+    20261112,
+    20261113,
+    20261114,
+    20261115,
+    20261116,
+    20261117,
+    20261118,
+    20261119,
+    20261120,
+    20261121,
+    20261122,
+    20261123,
+    20261124,
+    20261125,
+    20261126,
+    20261127,
+    20261128,
+    20261129
+  ],
+  "noise": "x_noisy_ij=clip(x_ij + level * clean_feature_population_sd_j * epsilon_ij, physical_min_j, physical_max_j), epsilon iid N(0,1)",
+  "scaler": "StandardScaler fitted once on the clean benchmark; reused at all noise levels",
+  "clipping": "Physical domains only; no clipping to generating scenario intervals",
+  "pairing": "Same Gaussian epsilon matrix per seed at every level and for every method",
+  "algorithm_seed": 42,
+  "hyperparameters": {
+    "K-means": {
+      "algorithm": "lloyd",
+      "copy_x": true,
+      "init": "k-means++",
+      "max_iter": 500,
+      "n_clusters": 4,
+      "n_init": 30,
+      "random_state": 42,
+      "tol": 0.0001,
+      "verbose": 0
+    },
+    "Hierarchical": {
+      "compute_distances": false,
+      "compute_full_tree": "auto",
+      "connectivity": null,
+      "distance_threshold": null,
+      "linkage": "ward",
+      "memory": null,
+      "metric": "euclidean",
+      "n_clusters": 4
+    },
+    "DBSCAN": {
+      "algorithm": "auto",
+      "eps": 0.6,
+      "leaf_size": 30,
+      "metric": "euclidean",
+      "metric_params": null,
+      "min_samples": 10,
+      "n_jobs": 1,
+      "p": null
+    },
+    "GMM": {
+      "covariance_type": "full",
+      "init_params": "kmeans",
+      "max_iter": 500,
+      "means_init": null,
+      "n_components": 4,
+      "n_init": 10,
+      "precisions_init": null,
+      "random_state": 42,
+      "reg_covar": 1e-06,
+      "tol": 0.001,
+      "verbose": 0,
+      "verbose_interval": 10,
+      "warm_start": false,
+      "weights_init": null
+    }
+  },
+  "controls": [
+    "Classical hard partition",
+    "Soft-conversion-only with the same semantic mapping",
+    "Rules only",
+    "0.8/0.2 hybrid"
+  ],
+  "hybrid": {
+    "alpha": 0.8,
+    "temperature": 1.2,
+    "semantic_mapping": "Hungarian assignment maximizing mean fuzzy compatibility of each detected cluster; no y_true input",
+    "zero_or_unmapped_algorithm_membership": "use fuzzy membership alone",
+    "rules": "Released ten-feature mean-aggregation rule compatibility, unchanged"
+  },
+  "metrics": "Hungarian-aligned accuracy with noise always rejected; ARI/NMI include -1 as rejection category; internal metrics exclude noise; report coverage separately",
+  "interpretation": "Conditional repeated measurement perturbations of one fixed synthetic dataset; not independent datasets or real-world validation",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "sklearn": "1.8.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "repository_seed": 42,
+  "compared_cells": 46000,
+  "exact_feature_cells": 22,
+  "exact_feature_rows": 0,
+  "source": "https://github.com/Khasanovpython/Adaptive-learning-Clustering-Research/blob/3fe7c251b9aa8e1d6d622ae16398ceb065a86921/requirements.txt",
+  "model": "Independent Gaussian draws within scenario and feature, clipped to interval; sigma=0.18 interval width. Three additive adjustments in Appendix A alter selected dependencies; those features are then clipped to [0,100].",
+  "scope": "Appendix A generates the primary benchmark at seed 42. The process that created the separately archived legacy workbook is unconfirmed."
+}

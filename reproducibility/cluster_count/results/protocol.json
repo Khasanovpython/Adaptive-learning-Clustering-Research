@@ -1,0 +1,85 @@
+{
+  "source_repository": "https://github.com/Khasanovpython/Adaptive-learning-Clustering-Research",
+  "source_commit": "3fe7c251b9aa8e1d6d622ae16398ceb065a86921",
+  "dataset_sha256": "4fc6158787b30c9c7a2c523ccb3169fc4fba9518f0bc57fa3ce9a6eee74737c2",
+  "data": "Seed-42 documented-generator benchmark; 4600 rows, 10 features, four balanced generating scenarios",
+  "experiment": "Vary requested number of model clusters; true scenario count remains four",
+  "requested_k": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "initialization_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61
+  ],
+  "repetitions": "K-means and GMM: 20 seeds; Ward: once per k; DBSCAN: once as count-free reference",
+  "preprocessing": "StandardScaler fitted to the same ten clean features; ID and labels excluded",
+  "K-means": {
+    "init": "k-means++",
+    "n_init": 30,
+    "max_iter": 500,
+    "tol": 0.0001
+  },
+  "Hierarchical": {
+    "linkage": "ward",
+    "metric": "euclidean"
+  },
+  "GMM": {
+    "covariance_type": "full",
+    "init_params": "kmeans",
+    "n_init": 10,
+    "max_iter": 500,
+    "reg_covar": 1e-06
+  },
+  "DBSCAN": {
+    "eps": 0.6,
+    "min_samples": 10,
+    "metric": "euclidean",
+    "n_jobs": 1
+  },
+  "fuzzy": "Released ten-feature mean-aggregation compatibility functions; fixed four scenario outputs",
+  "semantic_mapping": "Same target-label-free one-to-one Hungarian matching as noise experiment. More than four detected clusters leave some clusters unmatched; these points use rule-only fallback.",
+  "hybrid": {
+    "alpha": 0.8,
+    "distance_temperature": 1.2
+  },
+  "primary_metrics": [
+    "ARI",
+    "homogeneity",
+    "completeness"
+  ],
+  "accuracy": "One-to-one Hungarian-aligned accuracy; rejected and unmatched columns receive no credit. This score penalizes pure subclusters when k exceeds four.",
+  "model_order_selection": "For each stochastic seed choose k by each internal index or AIC/BIC without reference labels. Ward has one deterministic selection.",
+  "internal_indices": "Silhouette uses fixed 1200-observation sample, seed42; DBI/CHI use full assigned set; DBSCAN noise excluded",
+  "scope": "One fixed synthetic dataset; initialization variability is not dataset or sampling variability; no test of a different true scenario count",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "sklearn": "1.8.0"
+  }
+}

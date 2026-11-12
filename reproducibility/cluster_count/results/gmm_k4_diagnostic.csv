@@ -1,0 +1,3 @@
+seed,converged,iterations,lower_bound,bic,component_sizes,accuracy_all,coverage,accuracy_assigned,ari,nmi,n_clusters,noise_ratio,silhouette_assigned,dbi_assigned,chi_assigned,homogeneity,completeness
+42,True,2,-0.6775280854777718,8451.350832587,"[1150, 1150, 1150, 1150]",1.0,1.0,1.0,1.0,1.0,4,0.0,0.6705310117681089,0.4905642643725153,23973.872262624594,1.0,1.0
+44,True,2,-0.6775280854777718,8451.350832587,"[1150, 1150, 1150, 1150]",1.0,1.0,1.0,1.0,1.0,4,0.0,0.6705310117681089,0.4905642643725153,23973.872262624594,1.0,1.0

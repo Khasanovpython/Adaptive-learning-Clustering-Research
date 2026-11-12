@@ -1,0 +1,5 @@
+scenario,knowledge_score,engagement_score,assignment_completion,response_time,error_rate,motivation_level,cognitive_score,learning_speed,mental_load,risk_score
+1,H,H,H,fast,low_error,H,H,H,L,L
+2,M,M,M,medium_time,medium_error,M,M,M,M,M
+3,L,H,M,medium_time,medium_error,H,M,M,M,M
+4,L,L,L,slow,high_error,L,L,L,H,H
